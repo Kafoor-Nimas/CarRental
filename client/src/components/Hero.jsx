@@ -9,7 +9,7 @@ const Hero = () => {
         Luxury cars on Rent
       </h1>
 
-      <form className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 rounded-lg md:rounded-full w-full max-w-80 md:max-w-200 bg-white shadow-[0px_8px_20px_rgba(0,0,0,0.1)">
+      <form className="flex flex-col md:flex-row items-center md:items-center justify-between p-6 rounded-lg md:rounded-full w-full max-w-80 md:max-w-200 bg-white shadow-[0px_8px_20px_rgba(0,0,0,0.1) max-md:gap-3 ">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-10 min-md:ml-8">
           <div className="flex flex-col items-start gap-2">
             <select
