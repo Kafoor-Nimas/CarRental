@@ -24,7 +24,7 @@ const ManageCars = () => {
           <thead className="text-gray-500">
             <tr>
               <th className="p-3 font-medium">Car</th>
-              {/* <th className="p-3 font-medium max-md:hidden">Category</th> */}
+              <th className="p-3 font-medium max-lg:hidden">Category</th>
               <th className="p-3 font-medium">Price</th>
               <th className="p-3 font-medium max-md:hidden">Status</th>
               <th className="p-3 font-medium">Actions</th>
@@ -48,7 +48,7 @@ const ManageCars = () => {
                     </p>
                   </div>
                 </td>
-                {/* <td className="p-3 max-md:hidden text-sm">{car.category}</td> */}
+                <td className="p-3 max-lg:hidden text-sm">{car.category}</td>
                 <td className="p-3 ">
                   {currency}
                   {car.pricePerDay}{" "}
