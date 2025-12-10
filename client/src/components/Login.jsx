@@ -19,6 +19,7 @@ const Login = ({ setShowLogin }) => {
         onClick={(e) => e.stopPropagation()}
         className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-[352px] text-gray-500 rounded-lg shadow-xl border border-gray-200 bg-white"
       >
+        {/* Without stopPropagation(), clicking the button would trigger both the button's onClick and the parent div's onClick. With it, only the button's handler runs. */}
         <p className="text-2xl font-medium m-auto">
           <span className="text-primary">User</span>{" "}
           {state === "login" ? "Login" : "Sign Up"}
