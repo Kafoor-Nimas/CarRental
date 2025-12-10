@@ -8,7 +8,6 @@ const generateToken = (userId) => {
   return jwt.sign(payload, process.env.JWT_SECRET);
 };
 
-
 //register user
 export const regiterUser = async (req, res) => {
   try {
@@ -23,6 +22,27 @@ export const regiterUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ name, email, password: hashedPassword });
 
+    const token = generateToken(user._id.toString());
+    res.json({ success: true, token });
+  } catch (error) {
+    console.log(error.message);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+//Login user
+
+export const logingUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.json({ success: false, message: "Invalid Credentials" });
+    }
     const token = generateToken(user._id.toString());
     res.json({ success: true, token });
   } catch (error) {
