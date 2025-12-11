@@ -81,3 +81,24 @@ export const toggleCarAvailability = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+//API to delete car
+export const deleteCar = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const { carId } = req.body;
+    const car = await Car.findById(carId);
+
+    //Checking is car belongs to the user
+    if (car.owner.toString() !== _id.toString()) {
+      return res.json({ success: false, message: "Unauthorized" });
+    }
+    //we can not delete this data because if someone booked this car in the past if we delete this car it also delete old booking list car details
+    car.owner = null;
+    car.isAvailable = false;
+    res.json({ success: true, message: "Car Removed" });
+  } catch (error) {
+    console.log(error.message);
+    res.json({ success: false, message: exrror.message });
+  }
+};
