@@ -144,3 +144,36 @@ export const getDashboardData = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+//API to update user image
+
+export const updateUserImage = async (req, res) => {
+  try {
+    const {_id} =req.user;
+    // 1. Check if file exists
+    if (!req.file) {
+      return res.json({
+        success: false,
+        message: "Image upload failed or no image provided",
+      });
+    }
+    // 2. Get the Cloudinary URL
+    const imageUrl = req.file.path;
+
+    // 3. Update the user's image in MongoDB
+    const updatedUser = await User.findByIdAndUpdate(
+      _id,
+      { image: imageUrl },
+      { new: true } // Returns the updated document
+    );
+
+    res.json({ 
+      success: true, 
+      message: "Profile image updated successfully",
+      user: updatedUser 
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.json({ success: false, message: error.message });
+  }
+};
