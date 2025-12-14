@@ -97,6 +97,7 @@ export const deleteCar = async (req, res) => {
     //we can not delete this data because if someone booked this car in the past if we delete this car it also delete old booking list car details
     car.owner = null;
     car.isAvailable = false;
+    await car.save();
     res.json({ success: true, message: "Car Removed" });
   } catch (error) {
     console.log(error.message);
@@ -149,7 +150,7 @@ export const getDashboardData = async (req, res) => {
 
 export const updateUserImage = async (req, res) => {
   try {
-    const {_id} =req.user;
+    const { _id } = req.user;
     // 1. Check if file exists
     if (!req.file) {
       return res.json({
@@ -167,10 +168,10 @@ export const updateUserImage = async (req, res) => {
       { new: true } // Returns the updated document
     );
 
-    res.json({ 
-      success: true, 
+    res.json({
+      success: true,
       message: "Profile image updated successfully",
-      user: updatedUser 
+      user: updatedUser,
     });
   } catch (error) {
     console.log(error.message);
