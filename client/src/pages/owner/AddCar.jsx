@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Title from "../../components/owner/Title";
 import { assets } from "../../assets/assets";
+import { useAppContext } from "../../context/AppContext.jsx";
+import toast from "react-hot-toast";
 
 const AddCar = () => {
-  const currency = import.meta.env.VITE_CURRENCY;
+  const { axios, currency } = useAppContext();
+  const [isloading, setIsLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [car, setCar] = useState({
     brand: "",
@@ -20,6 +23,39 @@ const AddCar = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    if (isloading) return null;
+    //because it already adding data
+
+    setIsLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("image", image);
+      formData.append("carData", JSON.stringify(car));
+
+      const { data } = await axios.post("/api/owner/add-car", formData);
+      if (data.success) {
+        toast.success(data.message);
+        setImage(null);
+        setCar({
+          brand: "",
+          model: "",
+          year: 0,
+          pricePerDay: 0,
+          category: "",
+          transmission: "",
+          fuel_type: "",
+          seating_capacity: 0,
+          location: "",
+          description: "",
+        });
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
   return (
     <div className="px-4 py-10 md:px-10 flex-1">
@@ -192,7 +228,7 @@ const AddCar = () => {
 
         <button className="flex items-center gap-2 px-4 py-2.5 mt-4 bg-primary text-white rounded-md font-medium w-max cursor-pointer">
           <img src={assets.tick_icon} alt="" />
-          List Your Car
+          {isloading ? "Loading..." : "List Your Car"}
         </button>
       </form>
     </div>
