@@ -45,10 +45,21 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  //Function to log out the user
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+    setUser(null);
+    setIsOwner(false);
+    axios.defaults.headers.common["Authorization"] = "";
+    toast.success("You have been logged out");
+  };
+
   //useEffect to retrieve the token from localStorage
   useEffect(() => {
     const token = localStorage.getItem("token");
     setToken(token);
+    fetchCars();
   }, []);
 
   //useEffect to fetch user data when token is avilable
@@ -73,6 +84,12 @@ export const AppProvider = ({ children }) => {
     setPickupDate,
     returnDate,
     setReturnDate,
+    cars,
+    setCars,
+    fetchUser,
+    fetchCars,
+    logout,
+    axios,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
