@@ -110,9 +110,13 @@ Make sure you have the following installed:
 
 1.  **Clone the repository**
 
-    ```bash
-    git clone [https://github.com/Kafoor-Nimas/CarRental.git](https://github.com/Kafoor-Nimas/CarRental.git)
-    cd car-rental
+        First, clone the repository:
+
+    [Car Rental Repo](https://github.com/Kafoor-Nimas/CarRental.git)
+
+````bash
+git clone https://github.com/Kafoor-Nimas/CarRental.git
+cd car-rental
     ```
 
 2.  **Install Backend Dependencies**
@@ -142,7 +146,7 @@ Make sure you have the following installed:
    CLOUDINARY_CLOUD_NAME=your_cloud_name
    CLOUDINARY_API_KEY=your_api_key
    CLOUDINARY_API_SECRET=your_api_secret
-   ```
+````
 
 2. Create a `.env` file in your **client** directory for Firebase:
 
