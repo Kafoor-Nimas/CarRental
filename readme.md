@@ -10,8 +10,8 @@ A full-stack modern car rental application built with the **MERN Stack**. This p
 **Cars Page**
 ![Cars Page](client/public/cars.png)
 
-**search**
-![search](client/public/search.png)
+**Search**
+![Search](client/public/search.png)
 
 **car-detail Page**
 ![car-detail Page](client/public/car-detail.png)
@@ -104,7 +104,7 @@ Make sure you have the following installed:
 - [Node.js](https://nodejs.org/) (v14 or higher)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 - [MongoDB](https://www.mongodb.com/) (Local or Atlas URL)
-- Cloudinary Account (Free tier available)
+- [Cloudinary Account](https://cloudinary.com/) (Free tier available)
 
 ### Installation
 
