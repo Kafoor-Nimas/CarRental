@@ -174,6 +174,7 @@ Visit `http://localhost:5173` (or your configured port) to view the app.
 The application will be available at:
 
 Frontend: http://localhost:5173
+
 Backend: http://localhost:3000
 
 ---
