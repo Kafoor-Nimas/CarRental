@@ -6,8 +6,8 @@ import { motion } from "motion/react";
 const Testimonial = () => {
   const testimonials = [
     {
-      name: "Emma Rodriguez",
-      location: "Barcelona, Spain",
+      name: "Kasun",
+      location: "Colombo",
       image: assets.testimonial_image_1,
       // "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
       rating: 5,
@@ -15,8 +15,8 @@ const Testimonial = () => {
         "I've rented cars from various companies, but the experience with CarRental was exceptional.",
     },
     {
-      name: "Sophia Lee",
-      location: "New York, USA",
+      name: "Manjula",
+      location: "Gampaha",
       image: assets.testimonial_image_2,
       // "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
       rating: 5,
@@ -24,10 +24,10 @@ const Testimonial = () => {
         "CarRental made my trip so much easier. The car was delivered right to my door, and the customer service was fantastic!",
     },
     {
-      name: "John Smith",
-      location: "Sydney, Australia",
-      image:
-        "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
+      name: "Amila",
+      location: "Kandy",
+      image: assets.testimonial_image_3,
+      // "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
       rating: 5,
       testimonial:
         "I highly recommend CarRental! Their fleet is amazing, and I always feel like I'm getting the best deal with excellent service.",
